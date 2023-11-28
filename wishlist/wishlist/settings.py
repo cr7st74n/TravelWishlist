@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'travel_wishListCris'
+    'travel_wishListCris'  # Create our directory here in our settings 
 ]
 
 MIDDLEWARE = [
