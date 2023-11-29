@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Travel Whish List</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Travel Wish List</h1>
-        <h4>This app will help you manage the places that you could travel, and check the places that you have been.</h4>
+      <h1>Travel Wish List</h1>
+      <h4>This app will help you manage the places that you visited.</h4>
     </header>
     <div class="list">
+      <form method="POST" action="/ ">
+        {% csrf_token %} {{new_place_form}}
+        <button type="submit">Add</button>
+      </form>
 
-        <form method="POST" action="/ " >
+      {% for place in places %}
+
+      <ul>
+        <div>
+          <li>{{place.name}} </li>
+           
+          <form action="{% url 'place_was_visited' place.pk %}" method="POST">
             {% csrf_token %}
-            {{new_place_form}}
-            <button type="submit">Add</button>
-        </form>
+            <button>Visited</button>
+          </form>
 
-        {% for place in places %}
+        </div>
 
-        <ul>
-            <li>{{place.name}}, {{place.visited}}</li>
-        </ul>
+      </ul>
 
-        {% empty %}
-        <p>You have no places in yout wishlist</p>
+      {% empty %}
+      <p>You have no places in your wishlist</p>
 
-        {% endfor %}
+      {% endfor %}
+
+      <a href="{% url 'places_visited' %}">Places visited</a>
+      <a href="{% url 'about' %}">About us</a>
+
     </div>
-
-</body>
+  </body>
 </html>
