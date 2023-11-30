@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Travel Whish List</title>
-  </head>
-  <body>
+{% extends 'travel_wishlistCris/base.html' %}
+
+{%block content%}
     <header>
       <h1>Travel Wish List</h1>
       <h4>This app will help you manage the places that you visited.</h4>
@@ -35,10 +30,6 @@
       <p>You have no places in your wishlist</p>
 
       {% endfor %}
-
-      <a href="{% url 'places_visited' %}">Places visited</a>
-      <a href="{% url 'about' %}">About us</a>
-
     </div>
-  </body>
-</html>
+
+{% endblock %}
